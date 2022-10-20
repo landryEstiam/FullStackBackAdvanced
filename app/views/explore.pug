@@ -1,0 +1,25 @@
+extends layout.pug
+
+block content
+  <h1>Recherche</h1>
+
+  <p>Explorer  !</p>
+  form(method='GET' action='explore')
+   select(name="borough")
+    each result in boroughs
+     option(value=result) #{result}
+
+   select(name='cuisine')
+    each cuisine in cuisines
+     option(value=cuisine ) #{cuisine}
+
+   <input type="submit" /> 
+
+  p
+      =  ' [ Name ] [ Cuisine ] [ Address ] '
+
+  ul 
+    each result in results
+      
+      li= p
+              =  ' [ ' + result.name + '] [ ' + result.cuisine + ' ] [ ' + result.address.zipcode  + ' ' + result.address.street + ' ' + result.address.building + ' ' + result.address.coord + ' ] '  

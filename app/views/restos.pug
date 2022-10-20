@@ -1,0 +1,18 @@
+extends layout.pug
+
+block content
+  <h1>Recherche</h1>
+
+  <p>Explorer la base de restaurants de la ville de New York avec cette application !</p>
+  form(method='GET' action='restos')
+    <input type="text" name="name"/>
+    <input type="submit" />  
+
+    p
+      =  ' [ Name ] [ Cuisine ] [ Address ] '
+
+    ul 
+      each result in results
+       
+        li= p
+              =  ' [ ' + result.name + '] [ ' + result.cuisine + ' ] [ ' + result.address.zipcode  + ' ' + result.address.street + ' ' + result.address.building + ' ' + result.address.coord + ' ] '
