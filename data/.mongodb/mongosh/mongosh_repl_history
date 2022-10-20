@@ -1,3 +1,22 @@
+db.foo.aggregate( { $group: { _id: "$grades", totalReplies: { $sum: 1 } } });
+db.foo.aggregate( { $project: { "grades": 1 } }, { $group: { _id: "$grades", totalReplies: { $sum: 1 } } });
+db.foo.aggregate( { $project: { "grades": 1 } }, { $group: { _id: "$resul
+db.foo.aggregate( { $project: { "grades": 1 } }, { $group: { _id: "result", totalReplies: { $sum: 1 } } });
+db.foo.aggregate( { $project: { "grades": 1 } }, { $unwind: "$grades" }, { $group: { _id: "result", totalReplies: { $sum: 1 } } });
+db.foo.aggregate( { $project: { grades: 1 } }, { $unwind: "$grades" }, { $group: { _id: "result", totalReplies: { $sum: 1 } } });
+db.foo.aggregate({ $match: { "grades.grade": "A" } }, { $project: { grades: 1 } }, { $unwind: "$grades" }, { $group: { _id: "result", totalReplies: { $sum: 1 } } });
+db.foo.aggregate({ { $project: { grades: 1 } }, { $unwind: "$grades" }, { $group: { _id: "result", totalReplies: { $sum: 1 }  });
+db.foo.aggregate({ { $project: { grades: 1 } }, { $unwind: "$grades" }, { $group: { _id: "result", totalReplies: { $sum: 1 } } );
+db.foo.aggregate({ { $project: { grades: 1 } }, { $unwind: "$grades" }, { $group: { _id: "result", totalReplies: { $sum: 1 } } });
+db.foo.aggregate({ $match: { "grades.grade": "A" } }, { $project: { grades: 1 } }, { $unwind: "$grades" }, { $group: { _id: "result", totalReplies: { $sum: 1 } } });
+db.foo.aggregate({ $match: { "grades.grade": "A" } }, { $project: { replies: 1 } }, { $unwind: "$grades" }, { $group: { _id: "result", totalReplies: { $sum: 1 } } });
+db.foo.aggregate( { $project: { replies: 1 } }, { $unwind: "$replies" }, { $group: { _id: "result", totalReplies: { $sum: 1 } } });
+db.restaurants.aggregate([ { $group: { "_id": { quartier: "$borough" , cuisine: "$cuisine"}, total: { $sum: 1}  }}]) 
+db.restaurants.find().limit(5)
+db.restaurants.aggregate([ { $match: {"grades.grade" : "A"} },  { $group: { "_id": { quartier: "$borough" , cuisine: "$cuisine"}, total: { $sum: 1}  }}]) 
+db.restaurants.find().limit(5)
+db.restaurants.aggregate([  { $group: { "_id": { quartier: "$borough" , cuisine: "$cuisine"}, total: { $sum: 1}  }}]) 
+use ny
 db.restaurants.aggregate([  { $group: { "_id": { region: "$borough" , cuisine: "$cuisine"}, total: { $sum: 1}  }}]) 
 db.restaurants.aggregate([ { { $group: { "_id": { region: "$borough" , cuisine: "$cuisine"}, total: { $sum: 1}  }}]) 
 db.restaurants.aggregate([ { $match: { "cuisine": "Italian"}} , { $group: { "_id": { region: "$borough" , cuisine: "$cuisine"}, total: { $sum: 1}  }}]) 

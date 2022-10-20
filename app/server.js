@@ -2,7 +2,7 @@
 import express from "express" 
 import morgan from "morgan" 
 import router from "./router/router.js"
-import { openDatabase } from './model/database.js'
+import { openDatabase } from './models/database.js'
 const app = express();
 const port = 3002;
 
